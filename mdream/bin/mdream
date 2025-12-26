@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+FRONTEND_DIR="$(dirname "$0")/../dist/frontend" \
+  node "$(dirname "$0")"/../dist/mdream.js $*

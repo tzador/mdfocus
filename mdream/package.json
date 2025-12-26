@@ -1,0 +1,28 @@
+{
+  "name": "mdream",
+  "module": "src/backend.ts",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "mdream": "./bin/mdream"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/express": "^5.0.6"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^14.0.2",
+    "express": "^5.2.1",
+    "fast-glob": "^3.3.3",
+    "mdream-common": "workspace:*"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "mdream-common",
+  "module": "src/common.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
