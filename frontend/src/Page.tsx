@@ -1,9 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import ky from "ky";
 import type { FileType } from "mdream-common/src/common";
+import { useEffect } from "react";
 import { Markdown } from "./Markdown";
 
 export function Page({ path }: { path: string }) {
+  // Extract filename from path and update document title
+  useEffect(() => {
+    const originalTitle = document.title;
+    const filename = path.split("/").pop() || path;
+    document.title = filename;
+
+    // Reset title when component unmounts
+    return () => {
+      document.title = originalTitle;
+    };
+  }, [path]);
+
   const query = useQuery({
     queryKey: ["file", path],
     queryFn: async () => {

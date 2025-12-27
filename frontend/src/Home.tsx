@@ -1,7 +1,12 @@
-import { type RootType } from "mdream-common/src/common";
+import { type TreeType } from "mdream-common/src/common";
+import { useEffect } from "react";
 import { NavLink } from "react-router";
 
-export function Home({ root }: { root: RootType }) {
+export function Home({ root }: { root: TreeType }) {
+  useEffect(() => {
+    const title = root.root.split("/").pop() || "mdream";
+    document.title = title;
+  }, []);
   return (
     <div className="p-4">
       <div className="max-w-4xl mx-auto">

@@ -1,11 +1,11 @@
 import { z } from "zod";
 
-export const RootSchema = z.object({
+export const TreeSchema = z.object({
   root: z.string(),
   paths: z.string().array(),
 });
 
-export type RootType = z.infer<typeof RootSchema>;
+export type TreeType = z.infer<typeof TreeSchema>;
 
 export const FileSchema = z.object({
   path: z.string(),

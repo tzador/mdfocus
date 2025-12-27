@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import ky from "ky";
-import type { RootType } from "mdream-common/src/common";
+import type { TreeType } from "mdream-common/src/common";
 import { Route, Routes } from "react-router";
 import { Home } from "./Home";
 import { Page } from "./Page";
@@ -9,7 +9,7 @@ export function App() {
   const query = useQuery({
     queryKey: ["root"],
     queryFn: async () => {
-      return await ky.get<RootType>("/api/root").then((res) => res.json());
+      return await ky.get<TreeType>("/api/root").then((res) => res.json());
     },
     retry: false,
   });

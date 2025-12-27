@@ -6,8 +6,8 @@ import { access, readFile } from "fs/promises";
 import {
   FileSchema,
   type FileType,
-  RootSchema,
-  type RootType,
+  TreeSchema,
+  type TreeType,
 } from "mdream-common/src/common";
 import path from "path";
 
@@ -38,11 +38,11 @@ app.get("/api/root", async (_req, res) => {
     })
   ).toSorted();
 
-  const result: RootType = {
+  const result: TreeType = {
     root,
     paths,
   };
-  res.json(RootSchema.parse(result));
+  res.json(TreeSchema.parse(result));
 });
 
 app.get("/api/file/*path", async (req, res) => {

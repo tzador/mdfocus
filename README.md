@@ -8,4 +8,7 @@
 ## TODO
 
 - [ ] Themes
-- [ ] Side Navigation
+- [ ] Navigation
+- [ ] Table of contents
+- [ ] Fonts
+- [ ] Live refresh
