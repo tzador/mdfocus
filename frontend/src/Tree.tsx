@@ -125,7 +125,7 @@ export function Tree({ tree }: { tree: TreeType }) {
   return (
     <div className="text-sm">
       <div
-        className="top-0 sticky bg-(--mdream-bg) flex items-center h-7"
+        className="top-0 sticky bg-(--mdream-bg) flex items-center h-7 gap-2"
         style={{ zIndex: root.zindex }}
       >
         <span className="font-bold">$ mdream</span> {tree.root}/
