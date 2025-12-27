@@ -13,7 +13,8 @@ export function Page({ path }: { path: string }) {
     const filename = path.split("/").pop() || path;
     document.title = filename;
 
-    // Reset title when component unmounts
+    localStorage.setItem("mdream-last-page", path);
+
     return () => {
       document.title = originalTitle;
     };

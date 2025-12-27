@@ -64,7 +64,7 @@ function TreeNodeView({
 }) {
   if (node.kind === "file") {
     return (
-      <div style={{ paddingLeft: depth * 12 }}>
+      <div style={{ paddingLeft: depth * 12 }} id={`mdream-page-${node.path}`}>
         <NavLink
           to={node.path}
           className={() =>
