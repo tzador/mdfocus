@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm";
 
 export function Markdown({ markdown }: { markdown: string }) {
   return (
-    <div className="prose prose-lg mx-auto max-w-4xl">
+    <div className="mdream-prose prose prose-lg mx-auto max-w-4xl">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         // rehypePlugins={[rehypeHighlight]}

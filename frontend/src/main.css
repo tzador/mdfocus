@@ -1,13 +1,159 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@import "./themes/classic-light.css";
-@import "./themes/sepia.css";
-@import "./themes/dark.css";
-@import "./themes/high-contrast.css";
-@import "./themes/blue-light-filter.css";
-@import "./themes/paper-print.css";
-@import "./themes/solarized-light.css";
-@import "./themes/solarized-dark.css";
-@import "./themes/green-terminal.css";
-@import "./themes/warm-gray.css";
+body {
+  background-color: var(--mdream-bg);
+}
+
+/* mdream prose bridge */
+.mdream-prose {
+  color: var(--mdream-fg);
+
+  --tw-prose-body: var(--mdream-fg);
+  --tw-prose-headings: var(--mdream-fg);
+  --tw-prose-lead: var(--mdream-muted);
+  --tw-prose-links: var(--mdream-link);
+  --tw-prose-bold: var(--mdream-fg);
+  --tw-prose-counters: var(--mdream-muted);
+  --tw-prose-bullets: var(--mdream-muted);
+  --tw-prose-hr: var(--mdream-border);
+  --tw-prose-quotes: var(--mdream-quote);
+  --tw-prose-quote-borders: var(--mdream-quote-border);
+  --tw-prose-captions: var(--mdream-muted);
+  --tw-prose-code: var(--mdream-code-fg);
+  --tw-prose-pre-code: var(--mdream-pre-fg);
+  --tw-prose-pre-bg: var(--mdream-pre-bg);
+  --tw-prose-th-borders: var(--mdream-border);
+  --tw-prose-td-borders: var(--mdream-border);
+}
+
+.mdream-prose :not(pre) > code {
+  background: var(--mdream-code-bg);
+  color: var(--mdream-code-fg);
+  padding: 0.15em 0.35em;
+  border-radius: 0.375rem;
+}
+
+.mdream-prose a:hover {
+  color: var(--mdream-link-hover);
+}
+
+::selection {
+  background: var(--mdream-selection-bg);
+  color: var(--mdream-selection-fg);
+}
+
+[data-theme="light"] {
+  --mdream-bg: var(--color-slate-50);
+  --mdream-fg: var(--color-slate-900);
+  --mdream-muted: var(--color-slate-600);
+  --mdream-card: var(--color-white);
+  --mdream-border: var(--color-slate-200);
+
+  --mdream-link: var(--color-blue-700);
+  --mdream-link-hover: var(--color-blue-800);
+
+  --mdream-code-bg: var(--color-slate-100);
+  --mdream-code-fg: var(--color-slate-900);
+
+  --mdream-pre-bg: var(--color-slate-900);
+  --mdream-pre-fg: var(--color-slate-50);
+
+  --mdream-quote: var(--color-slate-700);
+  --mdream-quote-border: var(--color-slate-300);
+
+  --mdream-selection-bg: var(--color-yellow-200);
+  --mdream-selection-fg: var(--color-slate-900);
+}
+
+[data-theme="sepia"] {
+  --mdream-bg: var(--color-amber-50);
+  --mdream-fg: var(--color-stone-900);
+  --mdream-muted: var(--color-stone-600);
+  --mdream-card: var(--color-amber-100);
+  --mdream-border: var(--color-amber-300);
+
+  --mdream-link: var(--color-rose-700);
+  --mdream-link-hover: var(--color-rose-800);
+
+  --mdream-code-bg: var(--color-amber-100);
+  --mdream-code-fg: var(--color-stone-900);
+
+  --mdream-pre-bg: var(--color-stone-900);
+  --mdream-pre-fg: var(--color-amber-50);
+
+  --mdream-quote: var(--color-stone-700);
+  --mdream-quote-border: var(--color-amber-400);
+
+  --mdream-selection-bg: var(--color-amber-200);
+  --mdream-selection-fg: var(--color-stone-900);
+}
+
+[data-theme="paper"] {
+  --mdream-bg: var(--color-neutral-50);
+  --mdream-fg: var(--color-neutral-900);
+  --mdream-muted: var(--color-neutral-600);
+  --mdream-card: var(--color-white);
+  --mdream-border: var(--color-neutral-200);
+
+  --mdream-link: var(--color-emerald-700);
+  --mdream-link-hover: var(--color-emerald-800);
+
+  --mdream-code-bg: var(--color-neutral-100);
+  --mdream-code-fg: var(--color-neutral-900);
+
+  --mdream-pre-bg: var(--color-neutral-900);
+  --mdream-pre-fg: var(--color-neutral-50);
+
+  --mdream-quote: var(--color-neutral-700);
+  --mdream-quote-border: var(--color-neutral-300);
+
+  --mdream-selection-bg: var(--color-lime-200);
+  --mdream-selection-fg: var(--color-neutral-900);
+}
+
+[data-theme="dark"] {
+  --mdream-bg: var(--color-zinc-950);
+  --mdream-fg: var(--color-zinc-100);
+  --mdream-muted: var(--color-zinc-400);
+  --mdream-card: var(--color-zinc-900);
+  --mdream-border: var(--color-zinc-800);
+
+  --mdream-link: var(--color-sky-400);
+  --mdream-link-hover: var(--color-sky-300);
+
+  --mdream-code-bg: var(--color-zinc-900);
+  --mdream-code-fg: var(--color-zinc-100);
+
+  --mdream-pre-bg: var(--color-zinc-900);
+  --mdream-pre-fg: var(--color-zinc-100);
+
+  --mdream-quote: var(--color-zinc-200);
+  --mdream-quote-border: var(--color-zinc-700);
+
+  --mdream-selection-bg: var(--color-sky-900);
+  --mdream-selection-fg: var(--color-zinc-100);
+}
+
+[data-theme="oled"] {
+  --mdream-bg: var(--color-black);
+  --mdream-fg: var(--color-zinc-100);
+  --mdream-muted: var(--color-zinc-500);
+  --mdream-card: var(--color-zinc-950);
+  --mdream-border: var(--color-zinc-900);
+
+  --mdream-link: var(--color-cyan-400);
+  --mdream-link-hover: var(--color-cyan-300);
+
+  --mdream-code-bg: var(--color-zinc-950);
+  --mdream-code-fg: var(--color-zinc-100);
+
+  --mdream-pre-bg: var(--color-zinc-950);
+  --mdream-pre-fg: var(--color-zinc-100);
+
+  --mdream-quote: var(--color-zinc-200);
+  --mdream-quote-border: var(--color-zinc-800);
+
+  --mdream-selection-bg: var(--color-cyan-950);
+  --mdream-selection-fg: var(--color-zinc-100);
+}
