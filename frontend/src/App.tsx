@@ -30,7 +30,11 @@ export function App() {
     <Routes>
       <Route path="/" element={<Home tree={query.data} />} />
       {query.data.paths.map((path) => (
-        <Route key={path} path={path} element={<Page path={path} />} />
+        <Route
+          key={path}
+          path={path}
+          element={<Page root={query.data.root} path={path} />}
+        />
       ))}
     </Routes>
   );

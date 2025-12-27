@@ -1,6 +1,5 @@
 import ReactMarkdown from "react-markdown";
 import { NavLink } from "react-router";
-// import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 
 export function Markdown({ markdown }: { markdown: string }) {
@@ -8,7 +7,6 @@ export function Markdown({ markdown }: { markdown: string }) {
     <div className="mdream-prose prose prose-lg mx-auto max-w-4xl">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        // rehypePlugins={[rehypeHighlight]}
         components={{
           a({ href, children }) {
             if (!href) return;

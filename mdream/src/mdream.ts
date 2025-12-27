@@ -76,6 +76,21 @@ app.get("/api/file/*path", async (req, res) => {
 
 const frontendDir = process.env.FRONTEND_DIR;
 
+app.use(async (req, res, next) => {
+  if (req.path.endsWith(".md") || req.path.endsWith(".mdx")) {
+    next();
+    return;
+  }
+
+  const fullPath = path.join(path.resolve(root), req.path.slice(1));
+  try {
+    await access(fullPath);
+    res.sendFile(fullPath);
+  } catch (error) {
+    next();
+  }
+});
+
 if (frontendDir) {
   app.use(express.static(frontendDir));
   app.use((req, res) => {

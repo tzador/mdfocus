@@ -48,7 +48,7 @@ function buildTree(paths: string[]): DirNode {
 
 function sortChildren(children: Map<string, Node>): Node[] {
   return [...children.values()].sort((a, b) => {
-    if (a.kind !== b.kind) return a.kind === "file" ? -1 : 1; // files first
+    if (a.kind !== b.kind) return a.kind === "file" ? -1 : 1;
     return a.name.localeCompare(b.name);
   });
 }
@@ -64,7 +64,7 @@ function TreeNodeView({
 }) {
   if (node.kind === "file") {
     return (
-      <div style={{ paddingLeft: depth * 12 }} id={`mdream-page-${node.path}`}>
+      <div style={{ paddingLeft: depth * 12 }}>
         <NavLink
           to={node.path}
           className={() =>
@@ -78,7 +78,6 @@ function TreeNodeView({
     );
   }
 
-  // Dir (non-clickable)
   return (
     <div className="select-none">
       <div style={{ paddingLeft: depth * 12 }}>
