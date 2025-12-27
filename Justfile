@@ -1,6 +1,6 @@
 dev: _version
   bunx concurrently \
-    "bun run --hot mdream/src/mdream.ts samples" \
+    "bun run --hot mdream/src/mdream.ts ~/Work/wiki" \
     "cd frontend && bun run dev"
 
 build: _version

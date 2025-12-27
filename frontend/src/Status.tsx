@@ -30,7 +30,7 @@ export function Status({ root, path }: { root: string; path: string }) {
       ? "bg-yellow-300"
       : checked === "green"
       ? "bg-green-300"
-      : "bg-gray-300 opacity-10";
+      : "bg-gray-300 opacity-30";
 
   return (
     <button
@@ -40,7 +40,9 @@ export function Status({ root, path }: { root: string; path: string }) {
         )
       }
     >
-      <div className={`w-4 h-4 rounded-full ${colorClass}`}></div>
+      <div
+        className={`w-4 h-4 rounded-full cursor-pointer ${colorClass}`}
+      ></div>
     </button>
   );
 }

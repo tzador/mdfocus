@@ -85,7 +85,7 @@ function TreeNodeView({
   return (
     <div className="select-none">
       <div style={{ paddingLeft: depth * 12 }}>
-        <div className="rounded px-2 py-1 text-(--mdream-muted) font-bold">
+        <div className="rounded py-1 text-(--mdream-muted) font-bold">
           {node.name ? `${node.name}/` : ""}
         </div>
       </div>
