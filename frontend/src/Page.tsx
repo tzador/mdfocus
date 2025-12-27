@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { NavLink } from "react-router";
 import { Markdown } from "./Markdown";
 import { Status } from "./Status";
+import { TableOfContents } from "./TableOfContents";
 import { useScrollPosition } from "./useScrollPosition";
 
 export function Page({ root, path }: { root: string; path: string }) {
@@ -48,14 +49,22 @@ function LoadedPage({ root, file }: { root: string; file: FileType }) {
   useScrollPosition(root, file.path);
 
   return (
-    <div className="p-4">
-      <div className="mx-auto max-w-4xl font-mono text-sm mb-8 flex gap-2 items-center">
+    <div className="px-4">
+      <div className="mx-auto max-w-4xl font-mono text-sm mb-8 flex gap-2 items-center h-7 sticky top-0 bg-(--mdream-bg)">
         <NavLink to="/" className="text-blue-500">
           <ArrowLeft size={16} />
         </NavLink>
         <Status root={root} path={file.path} />
-        <span>{file.path}</span>
+        <button
+          className="text-blue-500"
+          onClick={() => {
+            window.scrollTo({ top: 0 });
+          }}
+        >
+          {file.path}
+        </button>
       </div>
+      <TableOfContents markdown={file.content} />
       <Markdown markdown={file.content} />
     </div>
   );

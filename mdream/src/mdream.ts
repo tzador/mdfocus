@@ -1,15 +1,15 @@
 import chalk from "chalk";
-import chokidar from "chokidar";
 import { Command } from "commander";
 import express from "express";
 import fastGlob from "fast-glob";
-import { access, readFile } from "fs/promises";
 import {
   FileSchema,
   type FileType,
   TreeSchema,
   type TreeType,
 } from "mdream-common/src/common";
+import { watch } from "node:fs";
+import { access, readFile } from "node:fs/promises";
 import path from "path";
 import { treePathCompare } from "./utils";
 
@@ -78,32 +78,24 @@ app.get("/api/watch", async (req, res) => {
   res.setHeader("Connection", "keep-alive");
   res.flushHeaders();
 
-  const watcher = chokidar.watch(root, {
-    ignored: [
-      "**/node_modules/**",
-      "**/.git/**",
-      (filePath: string, stats) =>
-        !!stats?.isFile() &&
-        !filePath.endsWith(".md") &&
-        !filePath.endsWith(".mdx"),
-    ],
-    ignoreInitial: true,
-  });
+  const ac = new AbortController();
 
-  const sendEvent = (event: string, filePath: string) => {
-    res.write(`data: ${JSON.stringify({ event, path: filePath })}\n\n`);
-  };
+  watch(root, { recursive: true, signal: ac.signal }, (eventType, filename) => {
+    if (!filename) return;
 
-  watcher.on("add", (filePath) => sendEvent("add", filePath));
-  watcher.on("change", (filePath) => sendEvent("change", filePath));
-  watcher.on("unlink", (filePath) => sendEvent("unlink", filePath));
+    // Filter for markdown files only
+    if (!filename.endsWith(".md") && !filename.endsWith(".mdx")) return;
 
-  watcher.on("error", (error) => {
-    console.error("chokidar error:", error);
+    // Skip node_modules and .git
+    if (filename.includes("node_modules") || filename.includes(".git")) return;
+
+    res.write(
+      `data: ${JSON.stringify({ event: eventType, path: filename })}\n\n`
+    );
   });
 
   req.on("close", () => {
-    watcher.close();
+    ac.abort();
   });
 });
 

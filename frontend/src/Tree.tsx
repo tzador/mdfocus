@@ -74,17 +74,20 @@ function TreeNodeView({
 }) {
   if (node.kind === "file") {
     return (
-      <div style={{ paddingLeft: depth * 12 }} className="flex items-center">
-        <Status root={root} path={node.path} />
+      <div
+        style={{ paddingLeft: depth * 12 }}
+        className="flex items-center gap-1"
+      >
         <NavLink
           to={node.path}
           className={() =>
-            "block truncate rounded px-2 py-1 text-blue-500 hover:bg-(--mdream-card)"
+            "block truncate rounded py-1 text-blue-500 hover:bg-(--mdream-card)"
           }
           title={node.path}
         >
           {node.name}
         </NavLink>
+        <Status root={root} path={node.path} />
       </div>
     );
   }
@@ -125,10 +128,12 @@ export function Tree({ tree }: { tree: TreeType }) {
   return (
     <div className="text-sm">
       <div
-        className="top-0 sticky bg-(--mdream-bg) flex items-center h-7 gap-2"
+        className="top-0 sticky bg-(--mdream-bg) flex items-baseline h-7 gap-2"
         style={{ zIndex: root.zindex }}
       >
-        <span className="font-bold">$ mdream</span> {tree.root}/
+        <span className="">$</span>
+        <span className="font-bold text-xl">mdream</span>
+        <span className="font-bold">{tree.root}/</span>
       </div>
       {sortChildren(root.children).map((child) => (
         <TreeNodeView

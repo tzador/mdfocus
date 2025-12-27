@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const states = ["red", "yellow", "green", null] as const;
+const states = ["yellow", "green", "red", null] as const;
 
 export function Status({ root, path }: { root: string; path: string }) {
   const key = `mdream-checkmark:${root}/${path}`;

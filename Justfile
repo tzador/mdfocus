@@ -1,6 +1,6 @@
 dev root: _version
   bunx concurrently \
-    "bun run --hot mdream/src/mdream.ts {{root}}" \
+    "bun run --hot mdream/src/mdream.ts --port 4141 {{root}}" \
     "cd frontend && bun run dev"
 
 build: _version
