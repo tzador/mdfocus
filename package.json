@@ -12,7 +12,7 @@
     "zod": "^4.2.1"
   },
   "workspaces": [
-    "mdfocus",
+    "backend",
     "common",
     "frontend"
   ]

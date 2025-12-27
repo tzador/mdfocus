@@ -126,7 +126,7 @@ Starts the backend and React dev server with HMR.
 just build
 ```
 
-Outputs production bundle to `mdfocus/dist/`.
+Outputs production bundle to `backend/dist/`.
 
 ---
 
@@ -134,9 +134,9 @@ Outputs production bundle to `mdfocus/dist/`.
 
 ```
 mdfocus/               # Bun monorepo
+├── backend/           # Backend server (Express)
 ├── common/            # Shared types & Zod schemas
 ├── frontend/          # React app (Vite + Tailwind)
-├── mdfocus/           # Backend server (Express)
 └── samples/           # Example Markdown files
 ```
 
