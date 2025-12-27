@@ -109,7 +109,7 @@ function TreeNodeView({
 export function Tree({ tree }: { tree: TreeType }) {
   const root = buildTree(tree.paths);
   return (
-    <div className="text-sm font-mono">
+    <div className="text-sm">
       <div className="mb-8">{tree.root}/</div>
       {sortChildren(root.children).map((child) => (
         <TreeNodeView
