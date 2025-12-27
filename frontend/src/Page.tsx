@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import ky from "ky";
+import { ArrowLeft } from "lucide-react";
 import type { FileType } from "mdream-common/src/common";
 import { useEffect } from "react";
+import { NavLink } from "react-router";
 import { Markdown } from "./Markdown";
 
 export function Page({ path }: { path: string }) {
@@ -41,6 +43,11 @@ export function Page({ path }: { path: string }) {
 
   return (
     <div className="p-4">
+      <div className="mx-auto max-w-4xl text-blue-500 font-mono text-sm mb-8">
+        <NavLink to="/" className="flex items-center gap-1">
+          <ArrowLeft size={16} /> {query.data.path}
+        </NavLink>
+      </div>
       <Markdown markdown={query.data.content} />
     </div>
   );

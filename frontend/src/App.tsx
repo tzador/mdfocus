@@ -28,7 +28,7 @@ export function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Home root={query.data} />} />
+      <Route path="/" element={<Home tree={query.data} />} />
       {query.data.paths.map((path) => (
         <Route key={path} path={path} element={<Page path={path} />} />
       ))}

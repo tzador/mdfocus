@@ -10,6 +10,7 @@ import {
   type TreeType,
 } from "mdream-common/src/common";
 import path from "path";
+import { treePathCompare } from "./utils";
 
 const program = new Command();
 
@@ -36,7 +37,7 @@ app.get("/api/root", async (_req, res) => {
       ignore: ["**/node_modules/**", "**/.git/**"],
       absolute: false,
     })
-  ).toSorted();
+  ).toSorted(treePathCompare);
 
   const result: TreeType = {
     root,

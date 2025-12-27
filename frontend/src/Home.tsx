@@ -1,22 +1,16 @@
 import { type TreeType } from "mdream-common/src/common";
 import { useEffect } from "react";
-import { NavLink } from "react-router";
+import { Tree } from "./Tree";
 
-export function Home({ root }: { root: TreeType }) {
+export function Home({ tree }: { tree: TreeType }) {
   useEffect(() => {
-    const title = root.root.split("/").pop() || "mdream";
+    const title = tree.root.split("/").pop() || "mdream";
     document.title = title;
   }, []);
   return (
     <div className="p-4">
       <div className="max-w-4xl mx-auto">
-        {root.paths.map((path) => (
-          <div key={path}>
-            <NavLink to={path} className="text-blue-500">
-              {path}
-            </NavLink>
-          </div>
-        ))}
+        <Tree tree={tree} />
       </div>
     </div>
   );
