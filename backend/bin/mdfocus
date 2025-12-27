@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
 
+echo "$(dirname "$0")/../dist/
+
 FRONTEND_DIR="$(dirname "$0")/../dist/frontend" \
   node "$(dirname "$0")"/../dist/backend.js $*
