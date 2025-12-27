@@ -11,6 +11,10 @@ html {
   background-color: var(--mdream-bg);
 }
 
+@theme {
+  --mdream-bg: var(--mdream-bg);
+}
+
 .prose {
   color: var(--mdream-fg);
 

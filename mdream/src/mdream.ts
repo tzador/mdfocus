@@ -1,4 +1,5 @@
 import chalk from "chalk";
+import chokidar from "chokidar";
 import { Command } from "commander";
 import express from "express";
 import fastGlob from "fast-glob";
@@ -19,9 +20,6 @@ program
   .description("Zero-config Markdown reading server")
   .argument("[root]", "Folder to read from", ".")
   .option("-p, --port <number>", "Port to listen on", "4242")
-  // .option("--host <host>", "Host to bind to", "127.0.0.1")
-  // .option("--lan", "Bind to all interfaces (same as --host 0.0.0.0)")
-  // .option("--theme <name>", "UI theme to use")
   // .option("--open", "Open browser automatically") // TODO: or hit enter Y/n to open browser
   .parse();
 
@@ -74,6 +72,41 @@ app.get("/api/file/*path", async (req, res) => {
   res.json(FileSchema.parse(result));
 });
 
+app.get("/api/watch", async (req, res) => {
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+  res.flushHeaders();
+
+  const watcher = chokidar.watch(root, {
+    ignored: [
+      "**/node_modules/**",
+      "**/.git/**",
+      (filePath: string, stats) =>
+        !!stats?.isFile() &&
+        !filePath.endsWith(".md") &&
+        !filePath.endsWith(".mdx"),
+    ],
+    ignoreInitial: true,
+  });
+
+  const sendEvent = (event: string, filePath: string) => {
+    res.write(`data: ${JSON.stringify({ event, path: filePath })}\n\n`);
+  };
+
+  watcher.on("add", (filePath) => sendEvent("add", filePath));
+  watcher.on("change", (filePath) => sendEvent("change", filePath));
+  watcher.on("unlink", (filePath) => sendEvent("unlink", filePath));
+
+  watcher.on("error", (error) => {
+    console.error("chokidar error:", error);
+  });
+
+  req.on("close", () => {
+    watcher.close();
+  });
+});
+
 const frontendDir = process.env.FRONTEND_DIR;
 
 app.use(async (req, res, next) => {
@@ -98,7 +131,7 @@ if (frontendDir) {
   });
 }
 
-app.listen(opts.port, () => {
+app.listen(opts.port, "localhost", () => {
   // TODO: handle host and lan options
   const addresses = ["http://localhost:" + opts.port];
   console.log(`${chalk.green("mdream")} is serving markdown files`);

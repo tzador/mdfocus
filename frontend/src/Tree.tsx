@@ -6,6 +6,7 @@ type DirNode = {
   kind: "dir";
   name: string;
   children: Map<string, Node>;
+  zindex: number;
 };
 
 type FileNode = {
@@ -17,7 +18,8 @@ type FileNode = {
 type Node = DirNode | FileNode;
 
 function buildTree(paths: string[]): DirNode {
-  const root: DirNode = { kind: "dir", name: "", children: new Map() };
+  let zindex = paths.length + 1;
+  const root: DirNode = { kind: "dir", name: "", children: new Map(), zindex };
 
   for (const path of paths) {
     const parts = path.split("/").filter(Boolean);
@@ -37,7 +39,12 @@ function buildTree(paths: string[]): DirNode {
       if (existing?.kind === "dir") {
         current = existing;
       } else {
-        const next: DirNode = { kind: "dir", name: part, children: new Map() };
+        const next: DirNode = {
+          kind: "dir",
+          name: part,
+          children: new Map(),
+          zindex: --zindex,
+        };
         current.children.set(part, next);
         current = next;
       }
@@ -84,7 +91,14 @@ function TreeNodeView({
 
   return (
     <div className="select-none">
-      <div style={{ paddingLeft: depth * 12 }}>
+      <div
+        className="sticky bg-(--mdream-bg)"
+        style={{
+          paddingLeft: depth * 12,
+          top: (depth + 1) * 28,
+          zIndex: node.zindex,
+        }}
+      >
         <div className="rounded py-1 text-(--mdream-muted) font-bold">
           {node.name ? `${node.name}/` : ""}
         </div>
@@ -110,12 +124,17 @@ export function Tree({ tree }: { tree: TreeType }) {
   const root = buildTree(tree.paths);
   return (
     <div className="text-sm">
-      <div className="mb-8">{tree.root}/</div>
+      <div
+        className="top-0 sticky bg-(--mdream-bg) flex items-center h-7"
+        style={{ zIndex: root.zindex }}
+      >
+        <span className="font-bold">$ mdream</span> {tree.root}/
+      </div>
       {sortChildren(root.children).map((child) => (
         <TreeNodeView
           key={child.kind === "file" ? child.path : `/${child.name}`}
           node={child}
-          depth={1}
+          depth={0}
           prefix=""
           root={tree.root}
         />

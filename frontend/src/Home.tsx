@@ -10,7 +10,7 @@ export function Home({ tree }: { tree: TreeType }) {
     document.title = title;
   }, []);
   return (
-    <div className="p-4">
+    <div className="px-4">
       <div className="max-w-4xl mx-auto">
         <Tree tree={tree} />
       </div>
