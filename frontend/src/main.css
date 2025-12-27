@@ -1,12 +1,12 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-body {
+html {
+  color: var(--mdream-fg);
   background-color: var(--mdream-bg);
 }
 
-/* mdream prose bridge */
-.mdream-prose {
+.prose {
   color: var(--mdream-fg);
 
   --tw-prose-body: var(--mdream-fg);
