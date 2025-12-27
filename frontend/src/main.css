@@ -1,2 +1,13 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+@import "./themes/classic-light.css";
+@import "./themes/sepia.css";
+@import "./themes/dark.css";
+@import "./themes/high-contrast.css";
+@import "./themes/blue-light-filter.css";
+@import "./themes/paper-print.css";
+@import "./themes/solarized-light.css";
+@import "./themes/solarized-dark.css";
+@import "./themes/green-terminal.css";
+@import "./themes/warm-gray.css";

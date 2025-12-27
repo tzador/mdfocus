@@ -1,14 +1,37 @@
+import { useQuery } from "@tanstack/react-query";
+import ky from "ky";
+import type { RootType } from "mdream-common/src/common";
 import { Route, Routes } from "react-router";
+import { Home } from "./Home";
 import { Page } from "./Page";
-import { Side } from "./Side";
 
 export function App() {
+  const query = useQuery({
+    queryKey: ["root"],
+    queryFn: async () => {
+      return await ky.get<RootType>("/api/root").then((res) => res.json());
+    },
+    retry: false,
+  });
+
+  if (query.isPending) {
+    return null;
+  }
+
+  if (query.isError) {
+    return (
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="text-red-500">{query.error.message}</div>
+      </div>
+    );
+  }
+
   return (
-    <div className="h-screen w-screen grid grid-cols-[auto_1fr]">
-      <Side />
-      <Routes>
-        <Route path="*" element={<Page />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home root={query.data} />} />
+      {query.data.paths.map((path) => (
+        <Route key={path} path={path} element={<Page path={path} />} />
+      ))}
+    </Routes>
   );
 }

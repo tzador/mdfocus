@@ -1,26 +1,34 @@
 import { useQuery } from "@tanstack/react-query";
 import ky from "ky";
 import type { FileType } from "mdream-common/src/common";
-import { useParams } from "react-router";
 import { Markdown } from "./Markdown";
 
-export function Page() {
-  const params = useParams();
-  const path = params["*"] || "";
-
+export function Page({ path }: { path: string }) {
   const query = useQuery({
     queryKey: ["file", path],
     queryFn: async () => {
-      const response = await ky.get<FileType>(`/api/file/${path}`);
-      return response.json();
+      return await ky
+        .get<FileType>(`/api/file/${path}`)
+        .then((res) => res.json());
     },
+    retry: false,
   });
 
+  if (query.isPending) {
+    return null;
+  }
+
+  if (query.isError) {
+    return (
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="text-red-500">{query.error.message}</div>
+      </div>
+    );
+  }
+
   return (
-    <div className="py-4 px-2 overflow-y-auto">
-      {query.isPending && <div>Loading...</div>}
-      {query.isError && <div>Error: {query.error.message}</div>}
-      {query.isSuccess && <Markdown markdown={query.data.content} />}
+    <div className="p-4">
+      <Markdown markdown={query.data.content} />
     </div>
   );
 }
