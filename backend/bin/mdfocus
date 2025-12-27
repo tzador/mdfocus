@@ -1,4 +1,17 @@
 #!/usr/bin/env sh
 
-FRONTEND_DIR="$(dirname "$0")/../dist/frontend" \
-  node "$(dirname "$0")"/../dist/backend.js $*
+# Resolve the real path of the script (handles symbolic links)
+SCRIPT_PATH="$0"
+while [ -L "$SCRIPT_PATH" ]; do
+  SCRIPT_DIR="$(cd -P "$(dirname "$SCRIPT_PATH")" && pwd)"
+  SCRIPT_PATH="$(readlink "$SCRIPT_PATH")"
+  # If relative link, resolve it relative to the directory of the symlink
+  case "$SCRIPT_PATH" in
+    /*) ;;
+    *) SCRIPT_PATH="$SCRIPT_DIR/$SCRIPT_PATH" ;;
+  esac
+done
+SCRIPT_DIR="$(cd -P "$(dirname "$SCRIPT_PATH")" && pwd)"
+
+FRONTEND_DIR="$SCRIPT_DIR/../dist/frontend" \
+  node "$SCRIPT_DIR/../dist/backend.js" "$@"
