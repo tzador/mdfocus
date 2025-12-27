@@ -1,8 +1,8 @@
-# 📖 mdream
+# 📖 mdfocus
 
 **Zero-config Markdown reading server** — beautifully render any folder of Markdown files in your browser.
 
-Point `mdream` at a directory and instantly get a navigable, live-reloading documentation site with table of contents, syntax highlighting, and Mermaid diagrams.
+Point `mdfocus` at a directory and instantly get a navigable, live-reloading documentation site with table of contents, syntax highlighting, and Mermaid diagrams.
 
 ---
 
@@ -22,7 +22,7 @@ Point `mdream` at a directory and instantly get a navigable, live-reloading docu
 ## 🚀 Quick Start
 
 ```sh
-npx mdream ./docs
+npx mdfocus ./docs
 ```
 
 Then open [http://localhost:4242](http://localhost:4242) in your browser.
@@ -30,7 +30,7 @@ Then open [http://localhost:4242](http://localhost:4242) in your browser.
 ### Options
 
 ```
-Usage: mdream [options] [root]
+Usage: mdfocus [options] [root]
 
 Arguments:
   root                    Folder to read from (default: ".")
@@ -54,8 +54,8 @@ Options:
 
 ```sh
 # Clone the repository
-git clone https://github.com/your-username/mdream.git
-cd mdream
+git clone https://github.com/tzador/mdfocus.git
+cd mdfocus
 
 # Install dependencies
 bun install
@@ -75,14 +75,14 @@ This starts both the backend server and React dev server with hot module replace
 just build
 ```
 
-Outputs the production bundle to `mdream/dist/`.
+Outputs the production bundle to `mdfocus/dist/`.
 
 ---
 
 ## 📁 Project Structure
 
 ```
-mdream/
+mdfocus/
 ├── common/          # Shared types and schemas (Zod)
 ├── frontend/        # React app (Vite + TailwindCSS)
 │   └── src/
@@ -91,10 +91,10 @@ mdream/
 │       ├── Page.tsx         # Individual page view
 │       ├── Markdown.tsx     # Markdown renderer
 │       └── TableOfContents.tsx
-├── mdream/          # Backend server (Express)
-│   ├── bin/mdream   # CLI entrypoint
+├── mdfocus/          # Backend server (Express)
+│   ├── bin/mdfocus   # CLI entrypoint
 │   └── src/
-│       └── mdream.ts
+│       └── mdfocus.ts
 └── samples/         # Example Markdown files
 ```
 
@@ -117,13 +117,6 @@ mdream/
 | Footnotes                            | ✅     |
 | GFM Alerts                           | 🚧     |
 | Math (LaTeX)                         | 🚧     |
-
----
-
-## 🗺️ Roadmap
-
-- [ ] Custom themes
-- [ ] Font selection
 
 ---
 

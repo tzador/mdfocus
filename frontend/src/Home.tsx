@@ -1,4 +1,4 @@
-import { type TreeType } from "mdream-common/src/common";
+import { type TreeType } from "mdfocus-common/src/common";
 import { useEffect } from "react";
 import { Tree } from "./Tree";
 import { useScrollPosition } from "./useScrollPosition";
@@ -6,7 +6,7 @@ import { useScrollPosition } from "./useScrollPosition";
 export function Home({ tree }: { tree: TreeType }) {
   useScrollPosition(tree.root, "/");
   useEffect(() => {
-    const title = tree.root.split("/").pop() || "mdream";
+    const title = tree.root.split("/").pop() || "mdfocus";
     document.title = title;
   }, []);
   return (

@@ -1,6 +1,10 @@
-import type { TreeType } from "mdream-common/src/common";
+import { Telescope } from "lucide-react";
+import type { TreeType } from "mdfocus-common/src/common";
 import { NavLink } from "react-router";
+import { FullScreen } from "./FullScreen";
+import { GitHub } from "./GitHub";
 import { Status } from "./Status";
+import { Theme } from "./Theme";
 
 type DirNode = {
   kind: "dir";
@@ -80,9 +84,7 @@ function TreeNodeView({
       >
         <NavLink
           to={node.path}
-          className={() =>
-            "block truncate rounded py-1 text-blue-500 hover:bg-(--mdream-card)"
-          }
+          className={() => "block truncate rounded py-1"}
           title={node.path}
         >
           {node.name}
@@ -95,14 +97,14 @@ function TreeNodeView({
   return (
     <div className="select-none">
       <div
-        className="sticky bg-(--mdream-bg)"
+        className="sticky bg-(--mdfocus-bg)"
         style={{
           paddingLeft: depth * 12,
           top: (depth + 1) * 28,
           zIndex: node.zindex,
         }}
       >
-        <div className="rounded py-1 text-(--mdream-muted) font-bold">
+        <div className="rounded py-1 text-(--mdfocus-muted) font-bold">
           {node.name ? `${node.name}/` : ""}
         </div>
       </div>
@@ -128,12 +130,15 @@ export function Tree({ tree }: { tree: TreeType }) {
   return (
     <div className="text-sm">
       <div
-        className="top-0 sticky bg-(--mdream-bg) flex items-baseline h-7 gap-2"
+        className="top-0 sticky bg-(--mdfocus-bg) flex items-center h-7 gap-2"
         style={{ zIndex: root.zindex }}
       >
-        <span className="">$</span>
-        <span className="font-bold text-xl">mdream</span>
-        <span className="font-bold">{tree.root}/</span>
+        <span className="font-bold">mdfocus</span>
+        <Telescope size={16} />
+        <span className="flex-1 truncate">{tree.root}/</span>
+        <GitHub />
+        <Theme />
+        <FullScreen />
       </div>
       {sortChildren(root.children).map((child) => (
         <TreeNodeView

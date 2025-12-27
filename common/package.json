@@ -1,5 +1,5 @@
 {
-  "name": "mdream-common",
+  "name": "mdfocus-common",
   "module": "src/common.ts",
   "type": "module",
   "private": true,

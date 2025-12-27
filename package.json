@@ -1,5 +1,5 @@
 {
-  "name": "mdream-monorepo",
+  "name": "mdfocus-monorepo",
   "private": true,
   "devDependencies": {
     "@types/bun": "latest",
@@ -12,7 +12,7 @@
     "zod": "^4.2.1"
   },
   "workspaces": [
-    "mdream",
+    "mdfocus",
     "common",
     "frontend"
   ]

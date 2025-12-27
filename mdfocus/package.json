@@ -1,11 +1,10 @@
 {
-  "name": "mdream",
+  "name": "mdfocus",
   "module": "src/backend.ts",
   "version": "0.0.1",
   "type": "module",
-  "private": true,
   "bin": {
-    "mdream": "./bin/mdream"
+    "mdfocus": "./bin/mdfocus"
   },
   "files": [
     "dist",
@@ -23,6 +22,6 @@
     "commander": "^14.0.2",
     "express": "^5.2.1",
     "fast-glob": "^3.3.3",
-    "mdream-common": "workspace:*"
+    "mdfocus-common": "workspace:*"
   }
 }

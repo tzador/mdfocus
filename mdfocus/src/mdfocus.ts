@@ -7,7 +7,7 @@ import {
   type FileType,
   TreeSchema,
   type TreeType,
-} from "mdream-common/src/common";
+} from "mdfocus-common/src/common";
 import { watch } from "node:fs";
 import { access, readFile } from "node:fs/promises";
 import path from "path";
@@ -16,7 +16,7 @@ import { treePathCompare } from "./utils";
 const program = new Command();
 
 program
-  .name("mdream")
+  .name("mdfocus")
   .description("Zero-config Markdown reading server")
   .argument("[root]", "Folder to read from", ".")
   .option("-p, --port <number>", "Port to listen on", "4242")
@@ -126,7 +126,7 @@ if (frontendDir) {
 app.listen(opts.port, "localhost", () => {
   // TODO: handle host and lan options
   const addresses = ["http://localhost:" + opts.port];
-  console.log(`${chalk.green("mdream")} is serving markdown files`);
+  console.log(`${chalk.green("mdfocus")} is serving markdown files`);
   console.log(`from:`);
   console.log(`  ${chalk.yellow(root)}`);
   console.log(`on:`);

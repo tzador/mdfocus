@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import ky from "ky";
-import type { TreeType } from "mdream-common/src/common";
+import type { TreeType } from "mdfocus-common/src/common";
 import { Route, Routes } from "react-router";
 import { Home } from "./Home";
 import { Page } from "./Page";

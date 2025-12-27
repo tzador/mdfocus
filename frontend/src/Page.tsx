@@ -1,12 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import ky from "ky";
 import { ArrowLeft } from "lucide-react";
-import type { FileType } from "mdream-common/src/common";
+import type { FileType } from "mdfocus-common/src/common";
 import { useEffect } from "react";
 import { NavLink } from "react-router";
+import { FullScreen } from "./FullScreen";
+import { GitHub } from "./GitHub";
 import { Markdown } from "./Markdown";
 import { Status } from "./Status";
 import { TableOfContents } from "./TableOfContents";
+import { Theme } from "./Theme";
 import { useScrollPosition } from "./useScrollPosition";
 
 export function Page({ root, path }: { root: string; path: string }) {
@@ -50,19 +53,24 @@ function LoadedPage({ root, file }: { root: string; file: FileType }) {
 
   return (
     <div className="px-4">
-      <div className="mx-auto max-w-4xl font-mono text-sm mb-8 flex gap-2 items-center h-7 sticky top-0 bg-(--mdream-bg)">
-        <NavLink to="/" className="text-blue-500">
+      <div className="mx-auto max-w-4xl font-mono text-sm mb-8 flex gap-2 items-center h-7 sticky top-0 bg-(--mdfocus-bg)">
+        <NavLink to="/">
           <ArrowLeft size={16} />
         </NavLink>
         <Status root={root} path={file.path} />
-        <button
-          className="text-blue-500"
-          onClick={() => {
-            window.scrollTo({ top: 0 });
-          }}
-        >
-          {file.path}
-        </button>
+        <div className="flex-1 flex">
+          <button
+            className="max-w-full truncate text-start cursor-pointer"
+            onClick={() => {
+              window.scrollTo({ top: 0 });
+            }}
+          >
+            {file.path}
+          </button>
+        </div>
+        <GitHub />
+        <Theme />
+        <FullScreen />
       </div>
       <TableOfContents markdown={file.content} />
       <Markdown markdown={file.content} />

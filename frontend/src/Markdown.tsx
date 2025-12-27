@@ -61,16 +61,12 @@ export function Markdown({ markdown }: { markdown: string }) {
       children?: React.ReactNode;
     }) => {
       const id = String(node?.position?.start.line ?? "");
-      return (
-        <Tag id={id}>
-          {id} # {children}
-        </Tag>
-      );
+      return <Tag id={id}>{children}</Tag>;
     };
   };
 
   return (
-    <div className="mdream-prose prose prose-lg mx-auto max-w-4xl">
+    <div className="mdfocus-prose prose prose-lg mx-auto max-w-4xl">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const states = ["yellow", "green", "red", null] as const;
 
 export function Status({ root, path }: { root: string; path: string }) {
-  const key = `mdream-checkmark:${root}/${path}`;
+  const key = `mdfocus-checkmark:${root}/${path}`;
   const [checked, setChecked] = useState<
     "red" | "yellow" | "green" | null | undefined
   >(undefined);

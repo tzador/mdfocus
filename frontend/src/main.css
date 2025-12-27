@@ -7,162 +7,160 @@ html {
 }
 
 html {
-  color: var(--mdream-fg);
-  background-color: var(--mdream-bg);
+  color: var(--mdfocus-fg);
+  background-color: var(--mdfocus-bg);
 }
 
 @theme {
-  --mdream-bg: var(--mdream-bg);
+  --mdfocus-bg: var(--mdfocus-bg);
 }
 
 .prose {
-  color: var(--mdream-fg);
+  color: var(--mdfocus-fg);
 
-  --tw-prose-body: var(--mdream-fg);
-  --tw-prose-headings: var(--mdream-fg);
-  --tw-prose-lead: var(--mdream-muted);
-  --tw-prose-links: var(--mdream-link);
-  --tw-prose-bold: var(--mdream-fg);
-  --tw-prose-counters: var(--mdream-muted);
-  --tw-prose-bullets: var(--mdream-muted);
-  --tw-prose-hr: var(--mdream-border);
-  --tw-prose-quotes: var(--mdream-quote);
-  --tw-prose-quote-borders: var(--mdream-quote-border);
-  --tw-prose-captions: var(--mdream-muted);
-  --tw-prose-code: var(--mdream-code-fg);
-  --tw-prose-pre-code: var(--mdream-pre-fg);
-  --tw-prose-pre-bg: var(--mdream-pre-bg);
-  --tw-prose-th-borders: var(--mdream-border);
-  --tw-prose-td-borders: var(--mdream-border);
+  --tw-prose-body: var(--mdfocus-fg);
+  --tw-prose-headings: var(--mdfocus-fg);
+  --tw-prose-lead: var(--mdfocus-muted);
+  --tw-prose-links: var(--mdfocus-link);
+  --tw-prose-bold: var(--mdfocus-fg);
+  --tw-prose-counters: var(--mdfocus-muted);
+  --tw-prose-bullets: var(--mdfocus-muted);
+  --tw-prose-hr: var(--mdfocus-border);
+  --tw-prose-quotes: var(--mdfocus-quote);
+  --tw-prose-quote-borders: var(--mdfocus-quote-border);
+  --tw-prose-captions: var(--mdfocus-muted);
+  --tw-prose-code: var(--mdfocus-code-fg);
+  --tw-prose-pre-code: var(--mdfocus-pre-fg);
+  --tw-prose-pre-bg: var(--mdfocus-pre-bg);
+  --tw-prose-th-borders: var(--mdfocus-border);
+  --tw-prose-td-borders: var(--mdfocus-border);
 }
 
-.mdream-prose :not(pre) > code {
-  background: var(--mdream-code-bg);
-  color: var(--mdream-code-fg);
+.mdfocus-prose :not(pre) > code {
+  background: var(--mdfocus-code-bg);
+  color: var(--mdfocus-code-fg);
   padding: 0.15em 0.35em;
   border-radius: 0.375rem;
 }
 
-.mdream-prose a:hover {
-  color: var(--mdream-link-hover);
+.mdfocus-prose a:hover {
+  color: var(--mdfocus-link-hover);
 }
 
 ::selection {
-  background: var(--mdream-selection-bg);
-  color: var(--mdream-selection-fg);
+  background: var(--mdfocus-selection-bg);
+  color: var(--mdfocus-selection-fg);
 }
 
+/* ─────────────────────────────────────────────────────────────
+   LIGHT — Clean, bright, classic reading
+   ───────────────────────────────────────────────────────────── */
 [data-theme="light"] {
-  --mdream-bg: var(--color-slate-200);
-  --mdream-fg: var(--color-slate-900);
-  --mdream-muted: var(--color-slate-600);
-  --mdream-card: var(--color-white);
-  --mdream-border: var(--color-slate-200);
+  --mdfocus-bg: var(--color-neutral-50);
+  --mdfocus-fg: var(--color-neutral-900);
+  --mdfocus-muted: var(--color-gray-500);
+  --mdfocus-card: var(--color-white);
+  --mdfocus-border: var(--color-neutral-200);
 
-  --mdream-link: var(--color-blue-700);
-  --mdream-link-hover: var(--color-blue-800);
+  --mdfocus-link: var(--color-blue-600);
+  --mdfocus-link-hover: var(--color-blue-700);
 
-  --mdream-code-bg: var(--color-slate-100);
-  --mdream-code-fg: var(--color-slate-900);
+  --mdfocus-code-bg: var(--color-gray-100);
+  --mdfocus-code-fg: var(--color-neutral-900);
 
-  --mdream-pre-bg: var(--color-slate-900);
-  --mdream-pre-fg: var(--color-slate-50);
+  --mdfocus-pre-bg: var(--color-neutral-900);
+  --mdfocus-pre-fg: var(--color-neutral-200);
 
-  --mdream-quote: var(--color-slate-700);
-  --mdream-quote-border: var(--color-slate-300);
+  --mdfocus-quote: var(--color-gray-700);
+  --mdfocus-quote-border: var(--color-gray-300);
 
-  --mdream-selection-bg: var(--color-yellow-200);
-  --mdream-selection-fg: var(--color-slate-900);
+  --mdfocus-selection-bg: var(--color-blue-200);
+  --mdfocus-selection-fg: var(--color-neutral-900);
 }
 
+/* ─────────────────────────────────────────────────────────────
+   SEPIA — Warm, paper-like, gentle on eyes
+   ───────────────────────────────────────────────────────────── */
 [data-theme="sepia"] {
-  --mdream-bg: var(--color-amber-50);
-  --mdream-fg: var(--color-stone-900);
-  --mdream-muted: var(--color-stone-600);
-  --mdream-card: var(--color-amber-100);
-  --mdream-border: var(--color-amber-300);
+  --mdfocus-bg: var(--color-amber-100);
+  --mdfocus-fg: var(--color-stone-800);
+  --mdfocus-muted: var(--color-stone-500);
+  --mdfocus-card: var(--color-amber-50);
+  --mdfocus-border: var(--color-amber-200);
 
-  --mdream-link: var(--color-rose-700);
-  --mdream-link-hover: var(--color-rose-800);
+  --mdfocus-link: var(--color-orange-700);
+  --mdfocus-link-hover: var(--color-orange-800);
 
-  --mdream-code-bg: var(--color-amber-100);
-  --mdream-code-fg: var(--color-stone-900);
+  --mdfocus-code-bg: var(--color-amber-200);
+  --mdfocus-code-fg: var(--color-stone-800);
 
-  --mdream-pre-bg: var(--color-stone-900);
-  --mdream-pre-fg: var(--color-amber-50);
+  --mdfocus-pre-bg: var(--color-stone-800);
+  --mdfocus-pre-fg: var(--color-stone-100);
 
-  --mdream-quote: var(--color-stone-700);
-  --mdream-quote-border: var(--color-amber-400);
+  --mdfocus-quote: var(--color-stone-600);
+  --mdfocus-quote-border: var(--color-amber-300);
 
-  --mdream-selection-bg: var(--color-amber-200);
-  --mdream-selection-fg: var(--color-stone-900);
+  --mdfocus-selection-bg: var(--color-amber-300);
+  --mdfocus-selection-fg: var(--color-stone-800);
 }
 
-[data-theme="paper"] {
-  --mdream-bg: var(--color-neutral-50);
-  --mdream-fg: var(--color-neutral-900);
-  --mdream-muted: var(--color-neutral-600);
-  --mdream-card: var(--color-white);
-  --mdream-border: var(--color-neutral-200);
-
-  --mdream-link: var(--color-emerald-700);
-  --mdream-link-hover: var(--color-emerald-800);
-
-  --mdream-code-bg: var(--color-neutral-100);
-  --mdream-code-fg: var(--color-neutral-900);
-
-  --mdream-pre-bg: var(--color-neutral-900);
-  --mdream-pre-fg: var(--color-neutral-50);
-
-  --mdream-quote: var(--color-neutral-700);
-  --mdream-quote-border: var(--color-neutral-300);
-
-  --mdream-selection-bg: var(--color-lime-200);
-  --mdream-selection-fg: var(--color-neutral-900);
-}
-
+/* ─────────────────────────────────────────────────────────────
+   DARK — Easy on eyes, comfortable for evening reading
+   ───────────────────────────────────────────────────────────── */
 [data-theme="dark"] {
-  --mdream-bg: var(--color-zinc-950);
-  --mdream-fg: var(--color-zinc-100);
-  --mdream-muted: var(--color-zinc-400);
-  --mdream-card: var(--color-zinc-900);
-  --mdream-border: var(--color-zinc-800);
+  --mdfocus-bg: var(--color-neutral-900);
+  --mdfocus-fg: var(--color-neutral-200);
+  --mdfocus-muted: var(--color-neutral-400);
+  --mdfocus-card: var(--color-neutral-800);
+  --mdfocus-border: var(--color-neutral-700);
 
-  --mdream-link: var(--color-sky-400);
-  --mdream-link-hover: var(--color-sky-300);
+  --mdfocus-link: var(--color-blue-400);
+  --mdfocus-link-hover: var(--color-blue-300);
 
-  --mdream-code-bg: var(--color-zinc-900);
-  --mdream-code-fg: var(--color-zinc-100);
+  --mdfocus-code-bg: var(--color-neutral-800);
+  --mdfocus-code-fg: var(--color-neutral-200);
 
-  --mdream-pre-bg: var(--color-zinc-900);
-  --mdream-pre-fg: var(--color-zinc-100);
+  --mdfocus-pre-bg: var(--color-neutral-950);
+  --mdfocus-pre-fg: var(--color-neutral-300);
 
-  --mdream-quote: var(--color-zinc-200);
-  --mdream-quote-border: var(--color-zinc-700);
+  --mdfocus-quote: var(--color-neutral-300);
+  --mdfocus-quote-border: var(--color-neutral-600);
 
-  --mdream-selection-bg: var(--color-sky-900);
-  --mdream-selection-fg: var(--color-zinc-100);
+  --mdfocus-selection-bg: var(--color-blue-900);
+  --mdfocus-selection-fg: var(--color-neutral-200);
 }
 
+/* ─────────────────────────────────────────────────────────────
+   OLED — True black, battery saving, high contrast
+   ───────────────────────────────────────────────────────────── */
 [data-theme="oled"] {
-  --mdream-bg: var(--color-black);
-  --mdream-fg: var(--color-zinc-100);
-  --mdream-muted: var(--color-zinc-500);
-  --mdream-card: var(--color-zinc-950);
-  --mdream-border: var(--color-zinc-900);
+  --mdfocus-bg: var(--color-black);
+  --mdfocus-fg: var(--color-neutral-300);
+  --mdfocus-muted: var(--color-neutral-500);
+  --mdfocus-card: var(--color-neutral-950);
+  --mdfocus-border: var(--color-neutral-800);
 
-  --mdream-link: var(--color-cyan-400);
-  --mdream-link-hover: var(--color-cyan-300);
+  --mdfocus-link: var(--color-cyan-400);
+  --mdfocus-link-hover: var(--color-cyan-300);
 
-  --mdream-code-bg: var(--color-zinc-950);
-  --mdream-code-fg: var(--color-zinc-100);
+  --mdfocus-code-bg: var(--color-neutral-950);
+  --mdfocus-code-fg: var(--color-neutral-300);
 
-  --mdream-pre-bg: var(--color-zinc-950);
-  --mdream-pre-fg: var(--color-zinc-100);
+  --mdfocus-pre-bg: var(--color-neutral-950);
+  --mdfocus-pre-fg: var(--color-neutral-400);
 
-  --mdream-quote: var(--color-zinc-200);
-  --mdream-quote-border: var(--color-zinc-800);
+  --mdfocus-quote: var(--color-neutral-400);
+  --mdfocus-quote-border: var(--color-neutral-700);
 
-  --mdream-selection-bg: var(--color-cyan-950);
-  --mdream-selection-fg: var(--color-zinc-100);
+  --mdfocus-selection-bg: var(--color-cyan-900);
+  --mdfocus-selection-fg: var(--color-neutral-300);
+}
+
+a {
+  color: var(--mdfocus-link);
+  text-decoration: none;
+  &:hover {
+    color: var(--mdfocus-link-hover);
+    text-decoration: underline;
+  }
 }

@@ -6,7 +6,7 @@ function normalizeRelativePath(path: string) {
 }
 
 function scrollStorageKey(root: string, relativePath: string) {
-  return `mdream-scroll:${root}:${normalizeRelativePath(relativePath)}`;
+  return `mdfocus-scroll:${root}:${normalizeRelativePath(relativePath)}`;
 }
 
 export function useScrollPosition(root: string, relativePath: string) {

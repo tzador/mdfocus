@@ -6,7 +6,7 @@ import { defineConfig } from "vite";
 export default defineConfig({
   plugins: [tailwindcss(), react()],
   build: {
-    outDir: "../mdream/dist/frontend",
+    outDir: "../mdfocus/dist/frontend",
     emptyOutDir: true,
   },
   server: {

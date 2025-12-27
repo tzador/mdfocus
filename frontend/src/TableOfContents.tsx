@@ -31,13 +31,13 @@ export function TableOfContents({ markdown }: { markdown: string }) {
 
   return (
     <details className="mx-auto max-w-4xl mb-6 group">
-      <summary className="cursor-pointer font-mono text-sm text-(--mdream-muted) hover:text-(--mdream-fg) transition-colors select-none list-none flex items-center gap-1.5">
+      <summary className="cursor-pointer font-mono text-sm text-(--mdfocus-muted) hover:text-(--mdfocus-fg) transition-colors select-none list-none flex items-center gap-1.5">
         <span className="text-xs transition-transform group-open:rotate-90">
           ▶
         </span>
         Table of Contents
       </summary>
-      <nav className="mt-3 pl-4 border-l-2 border-(--mdream-border)">
+      <nav className="mt-3 pl-4 border-l-2 border-(--mdfocus-border)">
         <ul className="space-y-1">
           {headings.map((heading) => (
             <li
@@ -56,9 +56,9 @@ export function TableOfContents({ markdown }: { markdown: string }) {
                     window.scrollTo({ top });
                   }
                 }}
-                className="font-mono text-sm text-(--mdream-link) hover:text-(--mdream-link-hover) transition-colors"
+                className="font-mono text-sm text-(--mdfocus-link) hover:text-(--mdfocus-link-hover) transition-colors"
               >
-                {heading.line} # {heading.text}
+                {heading.text}
               </button>
             </li>
           ))}
