@@ -12,5 +12,6 @@
 - [ ] Table of contents
 - [ ] Fonts
 - [ ] Live refresh
-- [ ] Index preserve scroll
-- [ ] Page preserve scroll
+- [x] Status dots
+- [x] Index preserve scroll
+- [x] Page preserve scroll

@@ -1,5 +1,6 @@
 import type { TreeType } from "mdream-common/src/common";
 import { NavLink } from "react-router";
+import { Status } from "./Status";
 
 type DirNode = {
   kind: "dir";
@@ -57,14 +58,17 @@ function TreeNodeView({
   node,
   depth,
   prefix,
+  root,
 }: {
   node: Node;
   depth: number;
   prefix: string;
+  root: string;
 }) {
   if (node.kind === "file") {
     return (
-      <div style={{ paddingLeft: depth * 12 }}>
+      <div style={{ paddingLeft: depth * 12 }} className="flex items-center">
+        <Status root={root} path={node.path} />
         <NavLink
           to={node.path}
           className={() =>
@@ -95,6 +99,7 @@ function TreeNodeView({
           node={child}
           depth={depth + 1}
           prefix={`${prefix}/${node.name}`}
+          root={root}
         />
       ))}
     </div>
@@ -112,6 +117,7 @@ export function Tree({ tree }: { tree: TreeType }) {
           node={child}
           depth={1}
           prefix=""
+          root={tree.root}
         />
       ))}
     </div>

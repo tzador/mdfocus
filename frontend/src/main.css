@@ -1,13 +1,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-.prose h1 img,
-.prose h2 img,
-.prose h3 img,
-.prose h4 img,
-.prose h5 img,
-.prose h6 img {
-  display: inline-block !important;
+html {
+  --font-sans: "Comic Sans MS", system-ui;
+  --font-mono: "Comic Sans MS", system-ui;
 }
 
 html {
@@ -53,7 +49,7 @@ html {
 }
 
 [data-theme="light"] {
-  --mdream-bg: var(--color-slate-50);
+  --mdream-bg: var(--color-slate-200);
   --mdream-fg: var(--color-slate-900);
   --mdream-muted: var(--color-slate-600);
   --mdream-card: var(--color-white);

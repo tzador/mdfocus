@@ -5,6 +5,7 @@ import type { FileType } from "mdream-common/src/common";
 import { useEffect } from "react";
 import { NavLink } from "react-router";
 import { Markdown } from "./Markdown";
+import { Status } from "./Status";
 import { useScrollPosition } from "./useScrollPosition";
 
 export function Page({ root, path }: { root: string; path: string }) {
@@ -48,10 +49,12 @@ function LoadedPage({ root, file }: { root: string; file: FileType }) {
 
   return (
     <div className="p-4">
-      <div className="mx-auto max-w-4xl text-blue-500 font-mono text-sm mb-8">
-        <NavLink to="/" className="flex items-center gap-1">
-          <ArrowLeft size={16} /> {file.path}
+      <div className="mx-auto max-w-4xl font-mono text-sm mb-8 flex gap-2 items-center">
+        <NavLink to="/" className="text-blue-500">
+          <ArrowLeft size={16} />
         </NavLink>
+        <Status root={root} path={file.path} />
+        <span>{file.path}</span>
       </div>
       <Markdown markdown={file.content} />
     </div>
