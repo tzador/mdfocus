@@ -1,44 +1,98 @@
-# 📖 mdfocus
+<h1 align="center">📖 mdfocus</h1>
 
-**Zero-config Markdown reading server** — beautifully render any folder of Markdown files in your browser.
+<p align="center">
+  <strong>Distraction-free Markdown reader</strong><br/>
+  For the age of LLM-generated content.
+</p>
 
-Point `mdfocus` at a directory and instantly get a navigable, live-reloading documentation site with table of contents, syntax highlighting, and Mermaid diagrams.
-
----
-
-## ✨ Features
-
-- **📁 File Tree Navigation** — Browse your entire Markdown structure with an expandable sidebar
-- **📑 Table of Contents** — Auto-generated from headings for quick navigation within pages
-- **🔄 Live Reload** — Changes to `.md`/`.mdx` files are reflected instantly in the browser
-- **🎨 Syntax Highlighting** — Beautiful code blocks for all major languages
-- **📊 Mermaid Diagrams** — Render flowcharts, sequence diagrams, and more
-- **📝 GitHub Flavored Markdown** — Tables, task lists, footnotes, and all GFM extensions
-- **🖼️ Image Support** — Serves images and assets from your Markdown directory
-- **💾 Scroll Preservation** — Remembers your position in both the tree and page content
+<p align="center">
+  <a href="https://www.npmjs.com/package/mdfocus"><img src="https://img.shields.io/npm/v/mdfocus.svg?style=flat-square&color=brightgreen" alt="npm version" /></a>
+  <a href="https://www.npmjs.com/package/mdfocus"><img src="https://img.shields.io/npm/dm/mdfocus.svg?style=flat-square&color=blue" alt="npm downloads" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-yellow.svg?style=flat-square" alt="license" /></a>
+</p>
 
 ---
+
+LLMs generate Markdown. Lots of it — notes, docs, wikis, research dumps. **mdfocus** gives you a clean, focused way to read it all. Point it at any folder and start reading. No build step, no config, no distractions.
+
+Live-reloading, table of contents, syntax highlighting, and Mermaid diagrams included.
+
+## 🎯 Philosophy
+
+| mdfocus is...                       | mdfocus is NOT...              |
+| ----------------------------------- | ------------------------------ |
+| A reader for your Markdown files    | A static site generator        |
+| For consuming LLM-generated content | For publishing docs to the web |
+| Zero-config, instant startup        | A build pipeline               |
+| Distraction-free, focused interface | A blogging platform            |
+
+If you want to build and deploy documentation, use [Docusaurus](https://docusaurus.io/), [VitePress](https://vitepress.dev/), or [Astro](https://astro.build/). If you want to _read_ your Markdown right now with zero friction — use mdfocus.
 
 ## 🚀 Quick Start
 
 ```sh
-npx mdfocus ./docs
+npx mdfocus ~/notes
 ```
 
-Then open [http://localhost:4242](http://localhost:4242) in your browser.
+Open [http://localhost:4242](http://localhost:4242) — that's it!
 
-### Options
+### Global Installation
+
+```sh
+npm install -g mdfocus
+mdfocus ~/claude-exports
+mdfocus ~/chatgpt-docs
+mdfocus ~/wiki
+```
+
+### CLI Options
 
 ```
 Usage: mdfocus [options] [root]
 
 Arguments:
-  root                    Folder to read from (default: ".")
+  root                    Folder to read from (default: current directory)
 
 Options:
-  -p, --port <number>     Port to listen on (default: "4242")
+  -p, --port <number>     Port to listen on (default: 4242)
   -h, --help              Display help
 ```
+
+---
+
+## ✨ Features
+
+| Feature                         | Description                                                |
+| ------------------------------- | ---------------------------------------------------------- |
+| 🧘 **Focus Mode**               | Clean, minimal interface — just your content, nothing else |
+| 🚦 **Reading Status**           | Mark files with 🟡 🟢 🔴 or none — track what you've read  |
+| 📑 **Table of Contents**        | Auto-generated from headings for quick in-page navigation  |
+| 🔄 **Live Reload**              | Changes to `.md` / `.mdx` files reflect instantly          |
+| 🎨 **Syntax Highlighting**      | Beautiful code blocks for 100+ languages                   |
+| 📊 **Mermaid Diagrams**         | Flowcharts, sequence diagrams, ERDs, and more              |
+| 📝 **GitHub Flavored Markdown** | Tables, task lists, footnotes, alerts                      |
+| 🖼️ **Asset Serving**            | Images and files from your Markdown directory              |
+| 💾 **Scroll Memory**            | Remembers your position in tree and content                |
+| 🌙 **Dark Mode**                | Easy on the eyes, day or night                             |
+
+---
+
+## 📝 Markdown Support
+
+| Feature                               | Status |
+| ------------------------------------- | ------ |
+| Headings, bold, italic, strikethrough | ✅     |
+| Links (internal & external)           | ✅     |
+| Images                                | ✅     |
+| Code blocks with syntax highlighting  | ✅     |
+| Tables                                | ✅     |
+| Task lists                            | ✅     |
+| Blockquotes                           | ✅     |
+| Horizontal rules                      | ✅     |
+| Mermaid diagrams                      | ✅     |
+| Footnotes                             | ✅     |
+| GFM Alerts                            | 🚧     |
+| Math (LaTeX)                          | 🚧     |
 
 ---
 
@@ -48,78 +102,46 @@ Options:
 
 - [Bun](https://bun.sh/) — JavaScript runtime & package manager
 - [Just](https://just.systems/) — Command runner (`brew install just`)
-- [Node.js](https://nodejs.org/) — For some build tooling (`brew install node`)
+- [Node.js](https://nodejs.org/) — For build tooling
 
 ### Setup
 
 ```sh
-# Clone the repository
 git clone https://github.com/tzador/mdfocus.git
 cd mdfocus
-
-# Install dependencies
 bun install
 ```
 
-### Running the Dev Server
+### Dev Server
 
 ```sh
 just dev ./samples
 ```
 
-This starts both the backend server and React dev server with hot module replacement.
+Starts the backend and React dev server with HMR.
 
-### Building
+### Build
 
 ```sh
 just build
 ```
 
-Outputs the production bundle to `mdfocus/dist/`.
+Outputs production bundle to `mdfocus/dist/`.
 
 ---
 
 ## 📁 Project Structure
 
 ```
-mdfocus/
-├── common/          # Shared types and schemas (Zod)
-├── frontend/        # React app (Vite + TailwindCSS)
-│   └── src/
-│       ├── App.tsx
-│       ├── Home.tsx         # File tree view
-│       ├── Page.tsx         # Individual page view
-│       ├── Markdown.tsx     # Markdown renderer
-│       └── TableOfContents.tsx
-├── mdfocus/          # Backend server (Express)
-│   ├── bin/mdfocus   # CLI entrypoint
-│   └── src/
-│       └── mdfocus.ts
-└── samples/         # Example Markdown files
+mdfocus/               # Bun monorepo
+├── common/            # Shared types & Zod schemas
+├── frontend/          # React app (Vite + Tailwind)
+├── mdfocus/           # Backend server (Express)
+└── samples/           # Example Markdown files
 ```
-
----
-
-## 📝 Supported Markdown Features
-
-| Feature                              | Status |
-| ------------------------------------ | ------ |
-| Headings (H1-H6)                     | ✅     |
-| Bold, Italic, Strikethrough          | ✅     |
-| Links (internal & external)          | ✅     |
-| Images                               | ✅     |
-| Code blocks with syntax highlighting | ✅     |
-| Tables                               | ✅     |
-| Task lists                           | ✅     |
-| Blockquotes                          | ✅     |
-| Horizontal rules                     | ✅     |
-| Mermaid diagrams                     | ✅     |
-| Footnotes                            | ✅     |
-| GFM Alerts                           | 🚧     |
-| Math (LaTeX)                         | 🚧     |
 
 ---
 
 ## 📄 License
 
-MIT
+MIT © [tzador](https://github.com/tzador)

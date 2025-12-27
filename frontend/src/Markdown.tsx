@@ -2,6 +2,7 @@ import mermaid from "mermaid";
 import { useEffect, useId, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { NavLink } from "react-router";
+import remarkGemoji from "remark-gemoji";
 import remarkGfm from "remark-gfm";
 
 mermaid.initialize({
@@ -68,7 +69,7 @@ export function Markdown({ markdown }: { markdown: string }) {
   return (
     <div className="mdfocus-prose prose prose-lg mx-auto max-w-4xl">
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
+        remarkPlugins={[remarkGfm, remarkGemoji]}
         components={{
           h1: createHeading("h1"),
           h2: createHeading("h2"),
