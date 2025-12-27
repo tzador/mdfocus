@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+.prose h1 img,
+.prose h2 img,
+.prose h3 img,
+.prose h4 img,
+.prose h5 img,
+.prose h6 img {
+  display: inline-block !important;
+}
+
 html {
   color: var(--mdream-fg);
   background-color: var(--mdream-bg);
