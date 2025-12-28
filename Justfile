@@ -9,13 +9,14 @@ build: _version
   cd frontend && bun run build
 
 publish: build
-  cd backend && cp package.json package.json.bak
-  cp README.md backend/README.md
+  rm -rf backend/publish
+  mkdir backend/publish
+  cp README.md backend/publish/README.md
   cd backend && bun run scripts/prepublish.ts
-  cd backend && bun publish --access public
-  cd backend && cp package.json.bak package.json
-  rm backend/package.json.bak
-  rm backend/README.md
+  cp -r backend/bin/ backend/publish/bin/
+  cp -r backend/dist/ backend/publish/dist/
+  cd backend/publish && bun publish --access public
+  rm -rf backend/publish
 
 _version:
   cd backend && bun run scripts/version.ts

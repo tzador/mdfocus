@@ -5,6 +5,7 @@
 
 const packageJsonPath = "./package.json";
 const packageJson = await Bun.file(packageJsonPath).json();
+const publishPackageJsonPath = "./publish/package.json";
 
 // Remove workspace dependencies (they're bundled into the build)
 if (packageJson.dependencies) {
@@ -16,5 +17,8 @@ if (packageJson.dependencies) {
   }
 }
 
-await Bun.write(packageJsonPath, JSON.stringify(packageJson, null, 2) + "\n");
+await Bun.write(
+  publishPackageJsonPath,
+  JSON.stringify(packageJson, null, 2) + "\n"
+);
 console.log("package.json prepared for publishing");
