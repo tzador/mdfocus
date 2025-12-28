@@ -118,8 +118,10 @@ app.use(async (req, res, next) => {
 
 if (frontendDir) {
   app.use(express.static(frontendDir));
-  app.use((req, res) => {
-    res.sendFile(path.join(path.resolve(frontendDir), "index.html"));
+  app.use(async (req, res) => {
+    const indexPath = path.join(path.resolve(frontendDir), "index.html");
+    const indexContent = await readFile(indexPath, "utf-8");
+    res.send(indexContent);
   });
 }
 
