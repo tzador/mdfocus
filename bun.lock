@@ -5,11 +5,33 @@
     "": {
       "name": "mdfocus-monorepo",
       "dependencies": {
+        "@phosphor-icons/react": "^2.1.10",
         "zod": "^4.2.1",
       },
       "devDependencies": {
         "@types/bun": "latest",
         "concurrently": "^9.2.1",
+      },
+      "peerDependencies": {
+        "typescript": "^5",
+      },
+    },
+    "backend": {
+      "name": "mdfocus",
+      "version": "0.0.12",
+      "bin": {
+        "mdfocus": "./bin/mdfocus",
+      },
+      "dependencies": {
+        "chalk": "^5.6.2",
+        "commander": "^14.0.2",
+        "express": "^5.2.1",
+        "fast-glob": "^3.3.3",
+        "mdfocus-common": "workspace:*",
+      },
+      "devDependencies": {
+        "@types/bun": "latest",
+        "@types/express": "^5.0.6",
       },
       "peerDependencies": {
         "typescript": "^5",
@@ -57,27 +79,6 @@
         "typescript": "~5.9.3",
         "typescript-eslint": "^8.46.4",
         "vite": "^7.2.4",
-      },
-    },
-    "mdfocus": {
-      "name": "mdfocus",
-      "version": "0.0.1",
-      "bin": {
-        "mdfocus": "./bin/mdfocus",
-      },
-      "dependencies": {
-        "chalk": "^5.6.2",
-        "commander": "^14.0.2",
-        "express": "^5.2.1",
-        "fast-glob": "^3.3.3",
-        "mdfocus-common": "workspace:*",
-      },
-      "devDependencies": {
-        "@types/bun": "latest",
-        "@types/express": "^5.0.6",
-      },
-      "peerDependencies": {
-        "typescript": "^5",
       },
     },
   },
@@ -233,6 +234,8 @@
     "@nodelib/fs.stat": ["@nodelib/fs.stat@2.0.5", "", {}, "sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A=="],
 
     "@nodelib/fs.walk": ["@nodelib/fs.walk@1.2.8", "", { "dependencies": { "@nodelib/fs.scandir": "2.1.5", "fastq": "^1.6.0" } }, "sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg=="],
+
+    "@phosphor-icons/react": ["@phosphor-icons/react@2.1.10", "", { "peerDependencies": { "react": ">= 16.8", "react-dom": ">= 16.8" } }, "sha512-vt8Tvq8GLjheAZZYa+YG/pW7HDbov8El/MANW8pOAz4eGxrwhnbfrQZq0Cp4q8zBEu8NIhHdnr+r8thnfRSNYA=="],
 
     "@rolldown/pluginutils": ["@rolldown/pluginutils@1.0.0-beta.53", "", {}, "sha512-vENRlFU4YbrwVqNDZ7fLvy+JR1CRkyr01jhSiDpE1u6py3OMzQfztQU2jxykW3ALNxO4kSlqIDeYyD0Y9RcQeQ=="],
 
@@ -912,7 +915,7 @@
 
     "mdast-util-to-string": ["mdast-util-to-string@4.0.0", "", { "dependencies": { "@types/mdast": "^4.0.0" } }, "sha512-0H44vDimn51F0YwvxSJSm0eCDOJTRlmN0R1yBh4HLj9wiV1Dn0QoXGbvFAWj2hSItVTlCmBF1hqKlIyUBVFLPg=="],
 
-    "mdfocus": ["mdfocus@workspace:mdfocus"],
+    "mdfocus": ["mdfocus@workspace:backend"],
 
     "mdfocus-common": ["mdfocus-common@workspace:common"],
 

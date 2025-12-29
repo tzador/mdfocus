@@ -1,6 +1,7 @@
 import { Telescope } from "lucide-react";
 import type { TreeType } from "mdfocus-common/src/common";
 import { NavLink } from "react-router";
+import { Discord } from "./Discord";
 import { FullScreen } from "./FullScreen";
 import { GitHub } from "./GitHub";
 import { Status } from "./Status";
@@ -80,7 +81,7 @@ function TreeNodeView({
     return (
       <div
         style={{ paddingLeft: depth * 12 }}
-        className="flex items-center gap-1"
+        className="flex items-center gap-2"
       >
         <NavLink
           to={node.path}
@@ -133,9 +134,11 @@ export function Tree({ tree }: { tree: TreeType }) {
         className="top-0 sticky bg-(--mdfocus-bg) flex items-center h-7 gap-2"
         style={{ zIndex: root.zindex }}
       >
-        <span className="font-bold">mdfocus</span>
         <Telescope size={16} />
+        <span className="font-bold">mdfocus</span>
+        <div className="w-4"></div>
         <span className="flex-1 truncate">{tree.root}/</span>
+        <Discord />
         <GitHub />
         <Theme />
         <FullScreen />

@@ -1,4 +1,4 @@
-import { Github } from "lucide-react";
+import { GithubLogoIcon } from "@phosphor-icons/react";
 
 export function GitHub() {
   return (
@@ -8,7 +8,7 @@ export function GitHub() {
         window.open("https://github.com/tzador/mdfocus", "_blank");
       }}
     >
-      <Github size={16} />
+      <GithubLogoIcon size={16} />
     </button>
   );
 }

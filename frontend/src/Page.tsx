@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import type { FileType } from "mdfocus-common/src/common";
 import { useEffect } from "react";
 import { NavLink } from "react-router";
+import { Discord } from "./Discord";
 import { FullScreen } from "./FullScreen";
 import { GitHub } from "./GitHub";
 import { Markdown } from "./Markdown";
@@ -68,6 +69,7 @@ function LoadedPage({ root, file }: { root: string; file: FileType }) {
             {file.path}
           </button>
         </div>
+        <Discord />
         <GitHub />
         <Theme />
         <FullScreen />

@@ -41,7 +41,7 @@ export function Status({ root, path }: { root: string; path: string }) {
       }
     >
       <div
-        className={`w-4 h-4 rounded-full cursor-pointer ${colorClass}`}
+        className={`w-3 h-3 rounded-full cursor-pointer ${colorClass}`}
       ></div>
     </button>
   );
