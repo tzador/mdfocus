@@ -1,10 +1,28 @@
 {
   "name": "mdfocus",
-  "version": "0.0.14",
+  "version": "0.0.16",
+  "description": "Distraction-free Markdown reader for the age of LLM-generated content",
+  "author": "tzador",
   "type": "module",
+  "keywords": [
+    "markdown",
+    "reader",
+    "viewer",
+    "documentation",
+    "llm",
+    "notes"
+  ],
+  "homepage": "https://github.com/tzador/mdfocus#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/tzador/mdfocus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tzador/mdfocus/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
   },
   "bin": {
     "mdfocus": "./bin/mdfocus"
